@@ -27,7 +27,9 @@ jobs:
           command: |-
             sudo add-apt-repository -y ppa:longsleep/golang-backports
             sudo apt update
-            sudo apt install golang-go npm
+            sudo apt install golang-go
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+            nvm install 20
             make test
   build:
     docker:
@@ -38,9 +40,6 @@ jobs:
       - run:
           name: Build an artifact
           command: |-
-            sudo add-apt-repository -y ppa:longsleep/golang-backports
-            sudo apt update
-            sudo apt install golang-go npm
             TAGS="bindata" make build
       - store_artifacts:
           path: gitea
