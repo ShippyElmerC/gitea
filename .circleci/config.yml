@@ -27,7 +27,7 @@ jobs:
           command: |-
             sudo add-apt-repository -y ppa:longsleep/golang-backports
             sudo apt update
-            sudo apt install golang-go
+            sudo apt install golang-go npm
             make test
   build:
     docker:
@@ -40,7 +40,7 @@ jobs:
           command: |-
             sudo add-apt-repository -y ppa:longsleep/golang-backports
             sudo apt update
-            sudo apt install golang-go
+            sudo apt install golang-go npm
             TAGS="bindata" make build
       - store_artifacts:
           path: gitea
