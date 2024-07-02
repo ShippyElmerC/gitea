@@ -24,7 +24,10 @@ jobs:
       # Replace this with a real test runner invocation
       - run:
           name: Run tests
-          command: go test ./...
+          command: |-
+            sudo apt update
+            sudo apt install golang-go
+            go test ./...
   build:
     docker:
       - image: cimg/base:current
@@ -33,7 +36,10 @@ jobs:
       # Replace this with steps to build a package, or executable
       - run:
           name: Build an artifact
-          command: TAGS="bindata" make build
+          command: |-
+            sudo apt update
+            sudo apt install golang-go
+            TAGS="bindata" make build
       - store_artifacts:
           path: gitea
   # deploy:
